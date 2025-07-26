@@ -101,16 +101,23 @@ body, html {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
   margin-top: 1.5rem;
+}
+
+.card svg {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 1rem; /* Esta é a propriedade chave */
+  fill: white;
 }
 
 .card {
   background: #006eff;
   color: white;
   border-radius: 20px;
-  padding: 1.5rem;
-  width: 220px;
+  padding: 2rem;
+  width: 250px;
 }
 
 .card img {
@@ -119,37 +126,26 @@ body, html {
 }
 
 
-.hero {
-  background-color: #006eff;
-  color: white;
-  padding: 3rem 0;
-}
-
-.hero-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
 .hero-text {
   max-width: 500px;
 }
 
 .hero-text h1 {
-  font-size: 3rem; /* aumenta título principal */
+  font-size: 2rem; /* aumenta título principal */
   line-height: 1.2;
   margin-bottom: 1rem;
 }
 
 .hero-text p {
-  font-size: 1.5rem; /* aumenta texto paragrafo texto principal */
+  font-size: 1rem; /* aumenta texto paragrafo texto principal */
   line-height: 1.4;
   margin-bottom: 1.5rem;
 }
 
 .hero-image img { /* fusca */
   width: 600px;
+  position: relative;
+  left: -100px; /* Desloca a imagem 100px para a esquerda */
 }
 
 .container {
@@ -312,7 +308,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.comparison-cards .card.agibank {
+.comparison-cards .card.fastbank {
   background-color: #006eff;
   color: white;
   display: flex; /* Para centralizar o botão "Contrate agora" */
@@ -320,7 +316,7 @@ body {
   justify-content: space-between;
 }
 
-.comparison-cards .card.agibank .btn-contract-bottom {
+.comparison-cards .card.fastbank .btn-contract-bottom {
   background-color: white;
   color: #006eff;
   padding: 15px 30px;
@@ -473,6 +469,7 @@ body {
   background-color: #0028a0; /* Cor de fundo azul da imagem */
   color: white;
   padding: 3rem 0;
+  padding-bottom: 200px; /* <<< ADICIONE ESTA LINHA */
   position: relative; /* Para posicionar a imagem das pessoas */
   overflow: hidden; /* Garante que a imagem não vaze */
 }
@@ -611,14 +608,28 @@ body {
 }
 
 .footer-image-people {
-  position: absolute;
-  bottom: 0;
-  top: 465px; /* Ajuste a posição vertical da imagem */
-  left: 100;
-  width: 400px; /* Ajuste o tamanho da imagem conforme necessário */
-  height: auto;
-  z-index: 0; /* Garante que fique atrás do texto */
+  position: absolute; /* Permite posicionar a imagem de forma precisa */
+  bottom: 0; /* Cola a imagem na parte inferior do contêiner pai relativo */
+  left: 50%; /* Move o canto esquerdo da imagem para o centro */
+  transform: translateX(-50%); /* Centraliza a imagem horizontalmente compensando sua própria largura */
+  width: 400px; /* Defina a largura desejada para a imagem no desktop */
+  height: auto; /* Mantém a proporção da imagem */
+  z-index: 0; /* Garante que a imagem fique atrás do texto, se necessário */
+  /* Remova 'top: 0px;' daqui, pois 'bottom: 0;' já é suficiente */
 }
+
+/* Regra de mídia para dispositivos móveis (já existente no seu CSS) */
+@media (max-width: 768px) { /* Ou o breakpoint que você usa para mobile */
+  .footer-image-people {
+    width: 400px; /* Reduz a largura da imagem em telas menores */
+    /* bottom: 15px; /* Opcional: Adicione um pequeno espaço na parte inferior em mobile */
+    /* left: 50%; /* Já definido acima, mas pode ser mantido para clareza */
+    /* transform: translateX(-50%); /* Já definido acima, mas pode ser mantido para clareza */
+  }
+}
+
+
+
 
 .footer-image-people img {
   width: 100%;
@@ -660,9 +671,4 @@ body {
     margin-right: auto;
   }
 
-  .footer-image-people {
-    width: 250px; /* Reduz a imagem em mobile */
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
+ 
